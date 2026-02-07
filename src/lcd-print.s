@@ -25,6 +25,8 @@ reset:
     jsr lcd_instruction
     lda #%00000110  ; Increment and shift cursor; don't shift display
     jsr lcd_instruction
+    lda #%00000001  ; Clear display
+    jsr lcd_instruction
 
     lda #"H"
     jsr print_char
@@ -66,6 +68,16 @@ lcd_instruction:
     lda #0          ; Clear RS/RW/E bits
     sta PORTA
     ; pla             ; pop A back from stack
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
     rts
 
 print_char:
