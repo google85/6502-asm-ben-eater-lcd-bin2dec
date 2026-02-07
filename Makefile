@@ -20,6 +20,11 @@ build:
 	${BUILD_CC} -Fbin -L ${LST_OUT} -dotdir ${SRC_IN} -o ${BIN_OUT}
 	hexdump -C ${BIN_OUT}
 
+# program: send program to minicontroller
+.PHONY: program
+program:
+	@minipro -p AT28C256 -w ${BIN_OUT}
+
 ## clean: Clean-up the build binaries
 .PHONY: clean
 clean:
