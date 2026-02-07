@@ -23,7 +23,6 @@ reset:
     lda #%00000110  ; Increment and shift cursor; don't shift display
     jsr lcd_instruction
 
-    ; step 5 - Write data to CGRAM/DDRAM
     lda #"H"
     jsr print_char
     lda #"e" 
@@ -55,6 +54,7 @@ loop:
     jmp loop
 
 lcd_instruction:
+    pha             ; push A to stack
     sta PORTB
     lda #0          ; Clear RS/RW/E bits
     sta PORTA
@@ -62,9 +62,11 @@ lcd_instruction:
     sta PORTA
     lda #0          ; Clear RS/RW/E bits
     sta PORTA
+    pla             ; pop A back from stack
     rts
 
 print_char:
+    pha             ; push A to stack
     sta PORTB
     lda #RS         ; Set RS; Clear RW/E bits
     sta PORTA
@@ -72,6 +74,7 @@ print_char:
     sta PORTA
     lda #RS         ; Clear E bit
     sta PORTA
+    pla             ; pop A back from stack
     rts
     
     .org $fffc
