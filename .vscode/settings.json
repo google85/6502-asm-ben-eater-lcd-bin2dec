@@ -4,5 +4,10 @@
     "files.associations": {
         ".env": "ini",
         "*.s": "asm6502"
+    },
+    "[6502]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnType": false,
+        "editor.formatOnPaste": false
     }
 }
