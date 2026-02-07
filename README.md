@@ -1,5 +1,6 @@
 ## Z80 Youtube clip
 - based on [YouTube video](https://www.youtube.com/watch?v=v3-a-zqKfgA)
+- starts from [YouTube tutorial with connecting LCD](https://www.youtube.com/watch?v=FY3zTUaykVo)
 
 
 - using custom `.devcontainer` that includes:
@@ -16,4 +17,7 @@ make build
 
 # show output as hex dump
 hexdump -C ./build/main.out
+
+# send program to minicontroller
+minipro -p AT28C256 -w a.out
 ```
