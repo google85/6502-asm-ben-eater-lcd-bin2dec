@@ -1,0 +1,8 @@
+{
+    "json.schemaDownload.enable": false, // disables warning
+    "editor.formatOnSave": false,
+    "files.associations": {
+        ".env": "ini",
+        "*.s": "asm6502"
+    }
+}

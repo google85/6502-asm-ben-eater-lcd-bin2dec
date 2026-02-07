@@ -1,0 +1,17 @@
+name: 6502-asm-devcontainer
+
+services:
+  devcontainer:
+    image: 6502-asm-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: devcontainer
+    working_dir: /usr/src/app
+    environment:
+      - TZ=Europe/Bucharest
+    volumes:
+      - ..:/usr/src/app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    tty: true
