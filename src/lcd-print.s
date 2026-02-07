@@ -16,58 +16,40 @@ reset:
     lda #%11100000  ; Set top 3 pins on port A to output
     sta DDRA
     
-    ; ~step 2 - Function set
     lda #%00111000  ; Set 8-bit mode; 2-line display; 5x8 font
     jsr lcd_instruction
-
-    ; step 3 - Display on/off control
     lda #%00001110  ; Display on; cursor on; blink off
     jsr lcd_instruction
-
-    ; step 4 - Entry mode set
     lda #%00000110  ; Increment and shift cursor; don't shift display
     jsr lcd_instruction
 
     ; step 5 - Write data to CGRAM/DDRAM
-    lda #"H"        ; ASCII char
+    lda #"H"
     jsr print_char
-    
-    lda #"e"        ; ASCII char
+    lda #"e" 
     jsr print_char
-
-    lda #"l"        ; ASCII char
+    lda #"l"
     jsr print_char
-
-    lda #"l"        ; ASCII char
+    lda #"l"
     jsr print_char
-
-    lda #"o"        ; ASCII char
+    lda #"o"
     jsr print_char
-
-    lda #","        ; ASCII char
+    lda #","
     jsr print_char
-
-    lda #" "        ; ASCII char
+    lda #" "
     jsr print_char
-
-    lda #"w"        ; ASCII char
+    lda #"w"
     jsr print_char
-
-    lda #"o"        ; ASCII char
+    lda #"o"
     jsr print_char
-
-    lda #"r"        ; ASCII char
+    lda #"r"
     jsr print_char
-
-    lda #"l"        ; ASCII char
+    lda #"l"
     jsr print_char
-
-    lda #"d"        ; ASCII char
+    lda #"d"
     jsr print_char
-
-    lda #"!"        ; ASCII char
+    lda #"!"
     jsr print_char
-
 
 loop:
     jmp loop
