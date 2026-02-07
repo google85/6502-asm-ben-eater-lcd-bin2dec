@@ -64,6 +64,116 @@ reset:
     sta PORTA
     lda #RS         ; Clear E bit
     sta PORTA
+    
+    lda #"e"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    STA PORTA
+
+    lda #"l"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #"l"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #"o"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #","        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #" "        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #"w"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #"o"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #"r"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #"l"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #"d"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+
+    lda #"!"        ; ASCII char
+    sta PORTB
+    lda #RS         ; Set RS; Clear RW/E bits
+    sta PORTA
+    lda #(RS | E)   ; Set both RS and E bit
+    sta PORTA
+    lda #RS         ; Clear E bit
+    sta PORTA
+   
+
 
 loop:
     jmp loop
