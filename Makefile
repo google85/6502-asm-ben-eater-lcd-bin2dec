@@ -1,4 +1,5 @@
-SRC_FILE = bin2dec
+SRC_FILE = lcd-print
+# SRC_FILE = bin2dec
 
 SRC_DIR = ./src
 BUILD_DIR = ./build
