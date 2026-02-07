@@ -58,14 +58,11 @@ reset:
     ; step 5 - Write data to CGRAM/DDRAM
     lda #"H"        ; ASCII char
     sta PORTB
-
-    lda #RS         ; Clear RS/RW/E bits
+    lda #RS         ; Set RS; Clear RW/E bits
     sta PORTA
-    
     lda #(RS | E)   ; Set both RS and E bit
     sta PORTA
-    
-    lda #RS         ; Clear RS/RW/E bits
+    lda #RS         ; Clear E bit
     sta PORTA
 
 loop:
