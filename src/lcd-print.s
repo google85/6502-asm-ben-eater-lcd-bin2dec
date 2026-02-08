@@ -79,7 +79,6 @@ lcdbusy:
     rts
 
 lcd_instruction:
-    ; pha             ; push A value to stack
     jsr lcd_wait
     sta PORTB
     lda #0          ; Clear RS/RW/E bits
@@ -88,21 +87,10 @@ lcd_instruction:
     sta PORTA
     lda #0          ; Clear RS/RW/E bits
     sta PORTA
-    ; pla             ; pop A value back from stack
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
     rts
 
 print_char:
-    ; pha             ; push A to stack
+    jsr lcd_wait
     sta PORTB
     lda #RS         ; Set RS; Clear RW/E bits
     sta PORTA
@@ -110,7 +98,6 @@ print_char:
     sta PORTA
     lda #RS         ; Clear E bit
     sta PORTA
-    ; pla             ; pop A back from stack
     rts
     
     .org $fffc
