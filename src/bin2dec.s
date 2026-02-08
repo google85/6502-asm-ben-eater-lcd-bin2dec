@@ -3,8 +3,9 @@ PORTA = $6001
 DDRB = $6002
 DDRA = $6003
 
-value = $0200
-mod10 = $0202
+value = $0200       ; 2 bytes
+mod10 = $0202       ; 2 bytes
+message = $0204     ; 6 bytes
 
 E  = %10000000
 RW = %01000000
@@ -31,6 +32,9 @@ reset:
     lda #%00000001  ; Clear display
     jsr lcd_instruction
 
+    lda #0
+    sta message
+    
     ; Initialize value to be the number to convert
     lda number
     sta value
@@ -72,17 +76,46 @@ ignore_result:
     lda mod10
     clc
     adc #"0"
-    jsr print_char
+    jsr push_char
 
     ; if value != 0, then continue dividing
     lda value
     ora value + 1
     bne divide          ; branch if value [all 16 bits] not zero
+    
+    ldx #0
+print:
+    lda message,x
+    beq loop
+    jsr print_char
+    inx
+    jmp print
 
 loop:
     jmp loop
 
 number: .word 1729
+
+; Add the character in the A register to the beginning of the
+; null-terminated string `message`
+push_char:
+    pha             ; Push new first char onto stack
+    ldy #0
+
+char_loop:
+    lda message,y   ; Get char on string and put into X
+    tax
+    pla
+    sta message,y   ; Pull char off stack and add it to the string
+    iny
+    txa
+    pha             ; Push char from string onto stack
+    bne char_loop
+    
+    pla
+    sta message,y   ; Pull the null off the stack and add to the end of the string
+    
+    rts
 
 lcd_wait:
     pha             ; push A value to stack
