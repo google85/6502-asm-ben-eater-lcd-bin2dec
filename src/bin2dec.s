@@ -3,6 +3,9 @@ PORTA = $6001
 DDRB = $6002
 DDRA = $6003
 
+value = $0200
+mod10 = $0202
+
 E  = %10000000
 RW = %01000000
 RS = %00100000
@@ -28,18 +31,12 @@ reset:
     lda #%00000001  ; Clear display
     jsr lcd_instruction
 
-    ldx #0
-print:
-    lda message,x
-    beq loop        ; Exit this loop when '\0' encountered
+    lda #"0" + %0100
     jsr print_char
-    inx
-    jmp print
-    
+    lda #"0" + %0010
+
 loop:
     jmp loop
-
-message: .asciiz "   Hello, world!  "
 
 lcd_wait:
     pha             ; push A value to stack
